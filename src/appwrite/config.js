@@ -20,8 +20,8 @@ export class Service{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
-                {
+                slug,   // Document ID (Unique Identifier)
+                {       // Document Data (Object)
                     title,
                     content,
                     featuredImage,
@@ -95,6 +95,13 @@ export class Service{
         }
     }
 
+//    for multiple queries
+//     getPosts([
+//     Query.equal("status", "active"),
+//     Query.equal("userId", "user-123")
+//     ]);
+
+
     // file upload service
 
     async uploadFile(file){
@@ -125,7 +132,7 @@ export class Service{
 
     getFilePreview(fileId){
         return this.bucket.getFilePreview(
-            con.appwriteBucketId,
+            conf.appwriteBucketId,
             fileId,
         )
     }
